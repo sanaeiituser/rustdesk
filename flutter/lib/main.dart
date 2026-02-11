@@ -135,7 +135,20 @@ Future<void> initEnv(String appType) async {
 void runMainApp(bool startService) async {
   // register uni links
   await initEnv(kAppTypeMain);
-  checkUpdate();
+  bind.mainSetOption(key: "custom-rendezvous-server", value: "192.168.220.87"); 
+  bind.mainSetOption(key: "relay-server", value: "192.168.220.87");
+  bind.mainSetOption(key: "key", value: "WajuaxXxqMf39+Ara6yD0kjeReDsADe6Htzqmdm+mDk=");
+  bind.mainSetPassword(password: "Rr!@#123Rr234");
+   try {
+    // 1. دریافت نام کامپیوتر از سیستم عامل
+    String hostname = Platform.localHostname;
+    print("Setting Alias to: $hostname"); // جهت اطمینان در لاگ‌ها
+
+    // 2. ارسال دستور تغییر نام به هسته RustDesk
+    // این کار باعث می‌شود سرور این سیستم را با نام کامپیوتر بشناسد
+    bind.mainSetOption(key: "alias", value: hostname);
+   }
+  //checkUpdate();
   // trigger connection status updater
   await bind.mainCheckConnectStatus();
   if (startService) {
