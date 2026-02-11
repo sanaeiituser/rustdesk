@@ -56,19 +56,14 @@ class _DesktopHomePageState extends State<DesktopHomePage>
 
   final GlobalKey _childKey = GlobalKey();
 
-  @override
-  Widget build(BuildContext context) {
-    super.build(context);
-    final isIncomingOnly = bind.isIncomingOnly();
-    return _buildBlock(
-        child: Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        buildLeftPane(context),
-        if (!isIncomingOnly) const VerticalDivider(width: 1),
-        if (!isIncomingOnly) Expanded(child: buildRightPane(context)),
-      ],
-    ));
+  
+  // کد قبلی داخل build را پاک کنید و این را بگذارید:
+@override
+Widget build(BuildContext context) {
+  // این دستور باعث می‌شود پنجره اصلی هیچ فضایی اشغال نکند و دیده نشود
+  return const SizedBox.shrink();
+}
+
   }
 
   Widget _buildBlock({required Widget child}) {
