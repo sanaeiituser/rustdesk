@@ -318,23 +318,10 @@ class _RemoteToolbarState extends State<RemoteToolbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(() {
-      // Wait for initialization to complete to prevent flickering
-      if (!widget.state.initialized.value) {
-        return const SizedBox.shrink();
-      }
-      // If toolbar is hidden, return empty widget
-      if (hide.value) {
-        return const SizedBox.shrink();
-      }
-      return Align(
-        alignment: Alignment.topCenter,
-        child: collapse.isFalse
-            ? _buildToolbar(context)
-            : _buildDraggableCollapse(context),
-      );
-    });
+    // مخفی کردن کامل نوار ابزار
+    return const SizedBox.shrink();
   }
+
 
   Widget _buildDraggableCollapse(BuildContext context) {
     return Obx(() {
